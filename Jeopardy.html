@@ -572,376 +572,179 @@
 
    ======================================================================== */
 
-const QUESTION_BANK = {
-  // ==================== ROUND 1: JEOPARDY ====================
-
-  "DC Concepts": [
-    {
-      id: "dc-001",
-      difficulty: 1,
-      pointValue: 100,
-      timeLimit: 10,
-      question: "This is the unit of measurement for electrical 'pressure' or potential difference.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
-      correctIndex: 2,
-      explanation: "Voltage (Volts) is the electrical pressure that causes current to flow.",
-      reference: "Fundamentals of DC"
-    },
-    {
-      id: "dc-002",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 12,
-      question: "This is the unit of measurement for the rate of electron flow in a circuit.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
-      correctIndex: 0,
-      explanation: "Current (Amperes) is the measure of how many electrons flow past a point per second.",
-      reference: "Fundamentals of DC"
-    },
-    {
-      id: "dc-003",
-      difficulty: 3,
-      pointValue: 300,
-      timeLimit: 14,
-      question: "A material, like rubber or plastic, that strongly opposes the flow of current is called:",
-      answers: ["A conductor", "A semiconductor", "A resistor", "An insulator"],
-      correctIndex: 3,
-      explanation: "Insulators have very high resistance and are used to prevent current from flowing where it is not wanted.",
-      reference: "Conductors vs. Insulators"
-    },
-    {
-      id: "dc-004",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 15,
-      question: "This is the unit of measurement for the opposition to current flow.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
-      correctIndex: 1,
-      explanation: "Resistance (Ohms) is the property that opposes the flow of current.",
-      reference: "Fundamentals of DC"
-    },
-    {
-      id: "dc-005",
-      difficulty: 4,
-      pointValue: 500,
-      timeLimit: 18,
-      question: "In 'Direct Current' (DC), the electrons flow in:",
-      answers: ["Two directions, alternating", "One direction only", "A circular, spinning pattern", "High-frequency pulses"],
-      correctIndex: 1,
-      explanation: "Direct Current (DC) is defined by its unidirectional flow, typically from negative to positive.",
-      reference: "AC vs. DC"
-    }
-  ],
-
-  "Ohm's Law": [
-    {
-      id: "ohm-001",
-      difficulty: 1,
-      pointValue: 100,
-      timeLimit: 10,
-      question: "What is the correct formula for Ohm's Law?",
-      answers: ["V = I x R", "R = V x I", "I = V x R", "P = V x I"],
-      correctIndex: 0,
-      explanation: "Ohm's Law states Voltage (V) equals Current (I) multiplied by Resistance (R).",
-      reference: "Ohm's Law Formula"
-    },
-    {
-      id: "ohm-002",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 15,
-      question: "A 10-ohm resistor has 2 amps of current flowing through it. What is the voltage drop across it?",
-      answers: ["5 Volts", "12 Volts", "0.2 Volts", "20 Volts"],
-      correctIndex: 3,
-      explanation: "Using V = I x R: 2 Amps * 10 Ohms = 20 Volts.",
-      reference: "Ohm's Law Calculation"
-    },
-    {
-      id: "ohm-003",
-      difficulty: 3,
-      pointValue: 300,
-      timeLimit: 15,
-      question: "A 28-volt circuit has a resistance of 7 ohms. How much current is flowing?",
-      answers: ["4 Amps", "196 Amps", "21 Amps", "0.25 Amps"],
-      correctIndex: 0,
-      explanation: "Using I = V / R: 28 Volts / 7 Ohms = 4 Amps.",
-      reference: "Ohm's Law Calculation"
-    },
-    {
-      id: "ohm-004",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 15,
-      question: "A lamp connected to a 14-volt source draws 2 amps. What is the lamp's resistance?",
-      answers: ["28 Ohms", "12 Ohms", "7 Ohms", "16 Ohms"],
-      correctIndex: 2,
-      explanation: "Using R = V / I: 14 Volts / 2 Amps = 7 Ohms.",
-      reference: "Ohm's Law Calculation"
-    },
-    {
-      id: "ohm-005",
-      difficulty: 4,
-      pointValue: 500,
-      timeLimit: 18,
-      question: "In a circuit with constant voltage, if you double the resistance, what happens to the current?",
-      answers: ["It doubles", "It stays the same", "It is cut in half", "It becomes zero"],
-      correctIndex: 2,
-      explanation: "Current and resistance are inversely proportional (I = V/R). If R doubles, I is halved.",
-      reference: "Ohm's Law Relationships"
-    }
-  ],
-
-  "The Power Law": [
-    {
-      id: "pwr-001",
-      difficulty: 1,
-      pointValue: 100,
-      timeLimit: 10,
-      question: "What is the basic formula for electrical power (Watt's Law)?",
-      answers: ["P = I x R", "P = V / I", "P = V x I", "P = V / R"],
-      correctIndex: 2,
-      explanation: "Power (P) in Watts equals Voltage (V) multiplied by Current (I).",
-      reference: "Power Law Formula"
-    },
-    {
-      id: "pwr-002",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 15,
-      question: "A 28V circuit is drawing 10 amps. How much power is being consumed?",
-      answers: ["2.8 Watts", "280 Watts", "38 Watts", "0.35 Watts"],
-      correctIndex: 1,
-      explanation: "Using P = V x I: 28 Volts * 10 Amps = 280 Watts.",
-      reference: "Power Law Calculation"
-    },
-    {
-      id: "pwr-003",
-      difficulty: 3,
-      pointValue: 300,
-      timeLimit: 15,
-      question: "What is the alternate formula for power when you only know current and resistance?",
-      answers: ["P = I² / R", "P = R² / I", "P = I x R²", "P = I² x R"],
-      correctIndex: 3,
-      explanation: "Since V = IR, substitute (IR) for V in P=VI, which gives P = (IR)I, or P = I²R.",
-      reference: "Power Law Formula"
-    },
-    {
-      id: "pwr-004",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 18,
-      question: "A 100-ohm resistor has 2 amps flowing through it. How much power is it dissipating?",
-      answers: ["200 Watts", "50 Watts", "400 Watts", "0.02 Watts"],
-      correctIndex: 2,
-      explanation: "Using P = I² x R: (2 Amps * 2 Amps) * 100 Ohms = 400 Watts.",
-      reference: "Power Law Calculation"
-    },
-    {
-      id: "pwr-005",
-      difficulty: 4,
-      pointValue: 500,
-      timeLimit: 18,
-      question: "What is the alternate formula for power when you only know voltage and resistance?",
-      answers: ["P = V² / R", "P = R² / V", "P = V x R²", "P = V² x R"],
-      correctIndex: 0,
-      explanation: "Since I = V/R, substitute (V/R) for I in P=VI, which gives P = V(V/R), or P = V²/R.",
-      reference: "Power Law Formula"
-    }
-  ],
-
-  // ==================== ROUND 2: DOUBLE JEOPARDY ====================
-
-  "Series Circuits": [
-    {
-      id: "ser-201",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 12,
-      question: "In a series circuit, the total resistance (Rt) is calculated by:",
-      answers: ["Averaging all resistors", "Using the smallest resistor value", "Adding all individual resistances", "Rt = (R1*R2)/(R1+R2)"],
-      correctIndex: 2,
-      explanation: "In a series circuit, resistances add up: Rt = R1 + R2 + R3 + ...",
-      reference: "Series Circuit Rules"
-    },
-    {
-      id: "ser-202",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 14,
-      question: "What is the rule for current in a series circuit?",
-      answers: ["It is the same through all components", "It divides at each component", "It is highest at the last component", "It is zero at the end of the loop"],
-      correctIndex: 0,
-      explanation: "A series circuit has only one path, so the current (flow) must be the same everywhere.",
-      reference: "Series Circuit Rules"
-    },
-    {
-      id: "ser-203",
-      difficulty: 4,
-      pointValue: 600,
-      timeLimit: 16,
-      question: "Three resistors are in series: 10 ohms, 20 ohms, and 30 ohms. What is the total resistance?",
-      answers: ["30 Ohms", "5.45 Ohms", "60 Ohms", "6000 Ohms"],
-      correctIndex: 2,
-      explanation: "Rt = R1 + R2 + R3. 10 + 20 + 30 = 60 Ohms.",
-      reference: "Series Circuit Calculation"
-    },
-    {
-      id: "ser-204",
-      difficulty: 4,
-      pointValue: 800,
-      timeLimit: 18,
-      question: "This law states that the sum of all voltage drops in a series loop equals the source voltage.",
-      answers: ["Ohm's Law", "Kirchhoff's Current Law (KCL)", "Watt's Law", "Kirchhoff's Voltage Law (KVL)"],
-      correctIndex: 3,
-      explanation: "Kirchhoff's Voltage Law (KVL) describes how voltage is distributed in a closed loop.",
-      reference: "Kirchhoff's Voltage Law"
-    },
-    {
-      id: "ser-205",
-      difficulty: 5,
-      pointValue: 1000,
-      timeLimit: 20,
-      question: "If one of three bulbs connected in series burns out (fails open), what happens to the other two?",
-      answers: ["They get brighter", "They get dimmer", "They both go out", "They are unaffected"],
-      correctIndex: 2,
-      explanation: "A burned-out bulb creates an open circuit, breaking the only path for current and stopping all flow.",
-      reference: "Series Circuit Troubleshooting"
-    }
-  ],
-
-  "Parallel Circuits": [
-    {
-      id: "par-201",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 12,
-      question: "What is the rule for voltage in a parallel circuit?",
-      answers: ["It is the same across all branches", "It divides equally among all branches", "It is zero across all branches", "It is highest at the first branch"],
-      correctIndex: 0,
-      explanation: "Components in parallel are connected across the same two points, so they must have the same voltage.",
-      reference: "Parallel Circuit Rules"
-    },
-    {
-      id: "par-202",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 14,
-      question: "This law states that the total current entering a junction must equal the total current leaving it.",
-      answers: ["Ohm's Law", "Kirchhoff's Current Law (KCL)", "Watt's Law", "Kirchhoff's Voltage Law (KVL)"],
-      correctIndex: 1,
-      explanation: "Kirchhoff's Current Law (KCL) describes how current splits in parallel branches.",
-      reference: "Kirchhoff's Current Law"
-    },
-    {
-      id: "par-203",
-      difficulty: 4,
-      pointValue: 600,
-      timeLimit: 16,
-      question: "Two 10-ohm resistors are in parallel. What is their total resistance?",
-      answers: ["20 Ohms", "10 Ohms", "5 Ohms", "0 Ohms"],
-      correctIndex: 2,
-      explanation: "Using (R1*R2)/(R1+R2): (10*10)/(10+10) = 100/20 = 5 Ohms. Total R is always less than the smallest branch.",
-      reference: "Parallel Circuit Calculation"
-    },
-    {
-      id: "par-204",
-      difficulty: 4,
-      pointValue: 800,
-      timeLimit: 18,
-      question: "In a parallel circuit, total current (It) is calculated by:",
-      answers: ["Using the smallest branch current", "Averaging all branch currents", "Adding all individual branch currents", "It = I1 x I2 x I3..."],
-      correctIndex: 2,
-      explanation: "Total current is the sum of the currents in each branch: It = I1 + I2 + I3 + ...",
-      reference: "Parallel Circuit Rules"
-    },
-    {
-      id: "par-205",
-      difficulty: 5,
-      pointValue: 1000,
-      timeLimit: 20,
-      question: "If one of three bulbs connected in parallel burns out (fails open), what happens to the other two?",
-      answers: ["They get brighter", "They get dimmer", "They both go out", "They are unaffected"],
-      correctIndex: 3,
-      explanation: "Each parallel branch is independent. An open in one branch does not affect the others.",
-      reference: "Parallel Circuit Troubleshooting"
-    }
-  ],
-
-  "Multimeter & Troubleshooting": [
-    {
-      id: "mtr-201",
-      difficulty: 2,
-      pointValue: 200,
-      timeLimit: 12,
-      question: "To measure voltage (VDC), a multimeter must be connected:",
-      answers: ["In series with the circuit", "In parallel (across) the component", "With the circuit power OFF", "In the AMPS jack"],
-      correctIndex: 1,
-      explanation: "Voltage is a measurement of potential difference, so the meter must be placed in parallel (across) the points.",
-      reference: "Multimeter Usage"
-    },
-    {
-      id: "mtr-202",
-      difficulty: 3,
-      pointValue: 400,
-      timeLimit: 14,
-      question: "To measure current (AMPS), a multimeter must be connected:",
-      answers: ["In series (in-line) with the circuit", "In parallel (across) the component", "With the circuit power OFF", "In the VOLTS jack"],
-      correctIndex: 0,
-      explanation: "Current is a measure of flow, so the circuit must be opened and the meter placed in series (in-line).",
-      reference: "Multimeter Usage"
-    },
-    {
-      id: "mtr-203",
-      difficulty: 4,
-      pointValue: 600,
-      timeLimit: 16,
-      question: "What is the most critical safety step before measuring resistance (Ohms)?",
-      answers: ["Set the meter to the highest range", "Verify the meter's battery is good", "Ensure all circuit power is OFF", "Use alligator clips for safety"],
-      correctIndex: 2,
-      explanation: "An ohmmeter sends its own voltage. Measuring a powered circuit will, at minimum, destroy the meter.",
-      reference: "Multimeter Safety"
-    },
-    {
-      id: "mtr-204",
-      difficulty: 4,
-      pointValue: 800,
-      timeLimit: 18,
-      question: "A technician reads 'OL' or 'Infinity' on their ohmmeter when checking a wire. This indicates:",
-      answers: ["A 'short circuit' to ground", "A good, low-resistance wire", "An 'open circuit' or break", "The wire has high current"],
-      correctIndex: 2,
-      explanation: "'OL' (Over Limit) means the resistance is too high to measure, indicating a break (an open circuit).",
-      reference: "Troubleshooting Opens"
-    },
-    {
-      id: "mtr-205",
-      difficulty: 5,
-      pointValue: 1000,
-      timeLimit: 20,
-      question: "A technician reads 0.2 Ohms when measuring from a wire to the aircraft airframe. This indicates:",
-      answers: ["A 'short circuit' to ground", "A good, isolated wire", "An 'open circuit' in the wire", "The wire's normal resistance"],
-      correctIndex: 0,
-      explanation: "A very low resistance path from a wire to ground (airframe) is the definition of a short circuit.",
-      reference: "Troubleshooting Shorts"
-    }
-  ],
-
-  // ==================== FINAL JEOPARDY ====================
-
-  FINAL: {
-    cat: "Applied Circuit Troubleshooting",
-    difficulty: 5,
-    timeLimit: 30,
-    question: "A component does not work. A technician measures 28V at the component's positive terminal and 26V at its ground terminal (relative to airframe). The circuit breaker is NOT tripped. What is the most likely fault?",
-    answers: [
-      "A short circuit in the power wire",
-      "A high-resistance (open) ground connection",
-      "A failed (open) component",
-      "A shorted (failed) component"
+const SAFETY_HUMAN_FACTORS_QUESTIONS = {
+    "ESD Protection": [
+        {
+            value: 100,
+            question: "This symbol, typically showing a hand inside a triangle, warns that components inside are sensitive to this type of electrical discharge.",
+            answer: "What is ESD (Electrostatic Discharge)?",
+            difficulty: "easy"
+        },
+        {
+            value: 200,
+            question: "This is the minimum voltage of static electricity that can damage sensitive avionics components, even though humans can't feel it until around 3,000 volts.",
+            answer: "What is 100 volts (or as low as 10-100 volts)?",
+            difficulty: "medium"
+        },
+        {
+            value: 300,
+            question: "These two essential pieces of equipment must be worn and properly grounded when working on ESD-sensitive avionics components.",
+            answer: "What are a wrist strap and heel grounders (or ESD smock)?",
+            difficulty: "easy"
+        },
+        {
+            value: 400,
+            question: "This type of material, used for work surfaces and storage, safely dissipates static charges rather than allowing buildup or rapid discharge.",
+            answer: "What is static-dissipative material (or conductive material, typically 10^6 to 10^9 ohms resistance)?",
+            difficulty: "medium"
+        },
+        {
+            value: 500,
+            question: "According to ESD standards, wrist straps should have this resistance value to safely dissipate charge while protecting the technician from electrical shock.",
+            answer: "What is 1 megohm (1 MΩ) resistance?",
+            difficulty: "hard"
+        }
     ],
-    correctIndex: 1,
-    explanation: "A good ground should read near 0V. Reading 26V on the ground wire means the ground path is open or has high resistance, and the voltage is 'floating' up to the supply voltage.",
-    reference: "Troubleshooting Ground Faults"
-  }
+    
+    "Shop Safety": [
+        {
+            value: 100,
+            question: "This document must be readily available for every chemical used in the shop, providing hazard information and emergency procedures.",
+            answer: "What is a Safety Data Sheet (SDS) or Material Safety Data Sheet (MSDS)?",
+            difficulty: "easy"
+        },
+        {
+            value: 200,
+            question: "When working with avionics equipment in an aircraft, this personal protective equipment protects your eyes from debris, chemical splashes, and wire ends.",
+            answer: "What are safety glasses (or safety goggles)?",
+            difficulty: "easy"
+        },
+        {
+            value: 300,
+            question: "This minimum safe distance, typically measured in feet, should be maintained from energized radar antennas during ground testing due to RF radiation hazards.",
+            answer: "What is 10 feet (or per manufacturer specifications, often 25-50 feet for weather radar)?",
+            difficulty: "medium"
+        },
+        {
+            value: 400,
+            question: "These lockout/tagout procedures are required when servicing avionics equipment to prevent this potentially fatal hazard.",
+            answer: "What is accidental energization (or unexpected startup/electrical shock)?",
+            difficulty: "medium"
+        },
+        {
+            value: 500,
+            question: "This OSHA regulation (29 CFR 1910.147) mandates specific procedures for controlling hazardous energy during maintenance operations.",
+            answer: "What is the Control of Hazardous Energy standard (or Lockout/Tagout - LOTO)?",
+            difficulty: "hard"
+        }
+    ],
+    
+    "Human Factors": [
+        {
+            value: 100,
+            question: "These 12 factors, including stress, fatigue, and lack of communication, are common contributors to maintenance errors according to the FAA.",
+            answer: "What are the Dirty Dozen (or 12 Human Factors)?",
+            difficulty: "easy"
+        },
+        {
+            value: 200,
+            question: "This human factor occurs when a technician becomes overly confident and takes shortcuts, often after years of experience.",
+            answer: "What is complacency (or overconfidence)?",
+            difficulty: "easy"
+        },
+        {
+            value: 300,
+            question: "This type of distraction, often from supervisors or coworkers, is a leading cause of skipped steps or incomplete tasks in avionics maintenance.",
+            answer: "What is interruption (or lack of communication/distraction)?",
+            difficulty: "medium"
+        },
+        {
+            value: 400,
+            question: "This safety principle states that technicians should stop and verify their work when they sense something isn't right, rather than continuing blindly.",
+            answer: "What is assertiveness (or speaking up/stop-work authority)?",
+            difficulty: "medium"
+        },
+        {
+            value: 500,
+            question: "Studies show that human performance degrades significantly after this many consecutive hours of work, increasing error rates by over 50%.",
+            answer: "What is 10-12 hours (or during night shifts/circadian rhythm disruption)?",
+            difficulty: "hard"
+        }
+    ],
+    
+    "Tool Safety": [
+        {
+            value: 100,
+            question: "This practice of accounting for all tools before and after a maintenance task prevents this serious aviation hazard.",
+            answer: "What is FOD (Foreign Object Debris/Damage)?",
+            difficulty: "easy"
+        },
+        {
+            value: 200,
+            question: "These specialized pliers with soft, non-marring jaws should be used when handling coaxial connectors to prevent damage.",
+            answer: "What are connector installation/removal tools (or safety-wire pliers/specialized RF tools)?",
+            difficulty: "medium"
+        },
+        {
+            value: 300,
+            question: "Before using any cutting or crimping tool, technicians should verify this critical characteristic to ensure proper force and fit.",
+            answer: "What is calibration (or proper adjustment/jaw alignment)?",
+            difficulty: "medium"
+        },
+        {
+            value: 400,
+            question: "When using a torque wrench on avionics rack fasteners, this common mistake can cause the wrench to slip and damage equipment or injure the technician.",
+            answer: "What is exceeding the wrench's maximum rated torque (or pulling instead of pushing)?",
+            difficulty: "hard"
+        },
+        {
+            value: 500,
+            question: "This specific tool control program, required by many airlines and military operations, uses individual accountability and tracking systems to prevent lost tools.",
+            answer: "What is a Tool Control Program (or shadowed toolboxes/CTK - Consolidated Tool Kit system)?",
+            difficulty: "hard"
+        }
+    ],
+    
+    "Hazardous Materials": [
+        {
+            value: 100,
+            question: "This cleaning solvent, once common in avionics shops, is now heavily regulated due to ozone depletion and carcinogenic properties.",
+            answer: "What is trichloroethylene (TCE) or methyl ethyl ketone (MEK)?",
+            difficulty: "medium"
+        },
+        {
+            value: 200,
+            question: "This PPE must be worn when handling flux, solvents, or corrosion removal chemicals to prevent skin absorption and burns.",
+            answer: "What are chemical-resistant gloves (nitrile or neoprene)?",
+            difficulty: "easy"
+        },
+        {
+            value: 300,
+            question: "These fumes, released when soldering wire or components, can cause respiratory irritation and should be controlled with ventilation.",
+            answer: "What is flux smoke (or rosin flux fumes/lead fumes)?",
+            difficulty: "medium"
+        },
+        {
+            value: 400,
+            question: "This hazard classification system uses diamonds with colored sections and numbers to quickly identify health, flammability, and reactivity risks.",
+            answer: "What is the NFPA 704 diamond (or HMIS - Hazardous Materials Identification System)?",
+            difficulty: "hard"
+        },
+        {
+            value: 500,
+            question: "These specific fibers, found in older aircraft insulation and gaskets, require special handling procedures and disposal due to severe lung disease risks.",
+            answer: "What is asbestos (requiring OSHA-certified abatement procedures)?",
+            difficulty: "hard"
+        }
+    ],
+    
+    "FINAL": {
+        value: 0,
+        category: "CAET FINAL - Safety & Human Factors",
+        question: "According to Boeing's maintenance error studies, this percentage of all aviation maintenance errors can be attributed to just three human factors: lack of communication, complacency, and fatigue - emphasizing why human factors training is critical for avionics technicians.",
+        answer: "What is approximately 60-70% (or the majority) of maintenance errors?",
+        difficulty: "final"
+    }
 };
 
 
