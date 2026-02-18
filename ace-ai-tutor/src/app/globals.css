@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg-navy: #0b0f2b;
+  --color-bg-midnight: #0a0e1a;
+  --color-neon-cyan: #33f6ff;
+  --color-magenta: #ff68d7;
+  --color-lime: #a8ff60;
+  --color-amber: #ffc857;
+  --color-text-light: #eaf2ff;
+  --color-text-muted: #9fb1d6;
+  --color-panel: #0f1620;
+  --color-panel-light: #141c2b;
+  --color-border-glow: rgba(51, 246, 255, 0.4);
+
+  --font-heading: "Press Start 2P", monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* CRT Scanline overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 3px
+  );
+  z-index: 9999;
+  animation: scanline-flicker 8s linear infinite;
+}
+
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.08; }
+}
+
+/* Title glow animation */
+@keyframes title-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--color-neon-cyan), 0 0 20px rgba(51, 246, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--color-neon-cyan), 0 0 30px rgba(51, 246, 255, 0.8);
+  }
+}
+
+/* Pulse animation for active elements */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--color-neon-cyan); }
+  50% { box-shadow: 0 0 20px var(--color-neon-cyan), 0 0 40px rgba(51, 246, 255, 0.3); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-cyan);
+}
