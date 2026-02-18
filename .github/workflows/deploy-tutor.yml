@@ -1,0 +1,66 @@
+name: Deploy ACE AI Tutor to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'ace-ai-tutor/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: ace-ai-tutor/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ace-ai-tutor
+        run: npm ci
+
+      - name: Temporarily remove API routes for static export
+        working-directory: ace-ai-tutor
+        run: mv src/app/api src/_api_backup
+
+      - name: Build static export
+        working-directory: ace-ai-tutor
+        run: npm run build
+
+      - name: Restore API routes
+        working-directory: ace-ai-tutor
+        run: mv src/_api_backup src/app/api
+
+      - name: Add .nojekyll
+        run: touch ace-ai-tutor/out/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ace-ai-tutor/out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

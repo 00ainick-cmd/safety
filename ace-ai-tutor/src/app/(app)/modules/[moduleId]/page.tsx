@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { CAET_MODULES } from "@/lib/constants";
 
+export function generateStaticParams() {
+  return CAET_MODULES.map((mod) => ({ moduleId: mod.id }));
+}
+
 // Demo objectives for any module — will be replaced with real content
 const DEMO_OBJECTIVES = [
   { id: "1", name: "Fundamental Principles", mastery: 85 },
